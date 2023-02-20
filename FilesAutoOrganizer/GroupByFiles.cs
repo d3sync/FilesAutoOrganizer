@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using static Newtonsoft.Json.JsonConvert;
 
 namespace FilesAutoOrganizer;
 
@@ -139,7 +140,7 @@ public class GroupByFiles
     {
         var filePath = global::System.IO.Path.Combine(global::System.IO.Directory.GetCurrentDirectory(), "appOrganizeSettings.json");
         if (global::System.IO.File.Exists(filePath)) return;
-        var jsonString = JsonConvert.SerializeObject(groupbylist, Formatting.Indented);
+        var jsonString = SerializeObject(groupbylist, Formatting.Indented);
         global::System.IO.File.WriteAllText(filePath, jsonString);
     }
 
@@ -152,7 +153,7 @@ public class GroupByFiles
         var filePath = Path.Combine(Directory.GetCurrentDirectory(), "appOrganizeSettings.json");
         if (!File.Exists(filePath)) return;
         var jsonString = File.ReadAllText(filePath);
-        groupbylist = JsonConvert.DeserializeObject<List<GroupByModel>>(jsonString);
+        groupbylist = DeserializeObject<List<GroupByModel>>(jsonString);
     }
     public string GetExtFolder(string ext)
     {

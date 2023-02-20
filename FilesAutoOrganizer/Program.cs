@@ -8,11 +8,13 @@ internal abstract class Program
     private static List<string> filesmd5list = new List<string>();
     public static void Main(string[] args)
     {
+        Console.ReadLine();
         var downloadsPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
         //Array.Resize(ref args, args.Length + 3);
         //args[0] = "--calchash";
         //args[1] = "--organize";
         //args[2] = @"--path=C:\Users\d3sync\Documents\Downloads";
+        //args[2] = Console.ReadLine();
         var gbf = new GroupByFiles();
         if (args.Length < 1)
         {
@@ -46,7 +48,7 @@ internal abstract class Program
         }
         else
         {
-
+            downloadsPath = null;
             downloadsPath = split[1];
         }
 
